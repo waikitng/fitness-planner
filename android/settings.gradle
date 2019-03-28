@@ -1,0 +1,3 @@
+rootProject.name = 'loginTesting'
+
+include ':app'
