@@ -11,5 +11,9 @@ export const styles = StyleSheet.create({
   marginBox: {
     alignItems: 'center',
     margin: 20
+  },
+  title: {
+    fontSize: 15,
+    margin: 20
   }
 });
