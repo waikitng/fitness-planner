@@ -7,3 +7,8 @@ Download "GennyMotion" for a use of an Emulator, move to the directory of the pr
 3. `npm install`
 4. `npm start -- --reset-cache`
 5. `react-native run-android`
+
+The first 4 options you only need to do them for the first time only, after that, everytime you want to run the application do the following:
+
+1. `npm start`
+2. `react-native run-android`
