@@ -40,5 +40,13 @@ export const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#34699a'
+  },
+  signupButton: {
+    alignItems: 'center'
+  },
+  signupTitle: {
+    fontSize: 18,
+    margin: 8,
+    fontWeight: 'bold'
   }
 });

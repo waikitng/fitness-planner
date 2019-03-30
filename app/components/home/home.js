@@ -25,6 +25,9 @@ class Home extends Component {
         <View style={marginBox}>
           <Button onPress={this.logout} title="Logout" />
         </View>
+        <View>
+          <Text style={title}>Signed in using: {email}</Text>
+        </View>
       </View>
     );
   }
