@@ -3,7 +3,7 @@ import notifications from '../raw/notifications';
 
 export default [
   {
-    schema: [User, Article, Comment, Photo, Version, Notification, Message, Card, Conversation],
+    schema: [User],
     schemaVersion: 1,
     migration(oldRealm, newRealm) {
       const newObjects = newRealm.objects('Notification');

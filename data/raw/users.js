@@ -1,18 +1,3 @@
-let images = [
-  require('../img/Image 10.png'),
-  require('../img/Image 11.png'),
-  require('../img/Image 2.png'),
-  require('../img/Image 3.png'),
-  require('../img/Image 4.png'),
-  require('../img/Image 1.png'),
-  require('../img/Image 12.png'),
-  require('../img/Image 8.png'),
-  require('../img/Image 6.png'),
-  require('../img/Image 9.png'),
-  require('../img/Image 5.png'),
-  require('../img/Image 7.png'),
-];
-
 const users = [{
   id: 1,
   firstName: 'Helen',
@@ -23,11 +8,9 @@ const users = [{
   password: '123456',
   newPassword: '12345678',
   confirmPassword: '12345678',
-  photo: require('../img/avatars/Image 9.png'),
   postCount: 86,
   followersCount: 22102,
   followingCount: 536,
-  images: images
 
 },
 {
@@ -43,8 +26,6 @@ const users = [{
   phone: '86-(261)670-4133',
   followingCount: 975,
   followersCount: 1703,
-  images: images,
-  photo: require('../img/avatars/Image 1.png'),
 },
 {
   id: 3,
@@ -59,8 +40,6 @@ const users = [{
   phone: '30-(524)246-5851',
   followingCount: 736,
   followersCount: 1534,
-  images: images,
-  photo: require('../img/avatars/Image 3.png'),
 },
 {
   id: 4,
@@ -75,8 +54,6 @@ const users = [{
   phone: '86-(499)721-5796',
   followingCount: 86,
   followersCount: 3303,
-  images: images,
-  photo: require('../img/avatars/Image 4.png'),
 },
 {
   id: 5,
@@ -91,8 +68,6 @@ const users = [{
   phone: '63-(210)188-9126',
   followingCount: 745,
   followersCount: 2703,
-  images: images,
-  photo: require('../img/avatars/Image 5.png'),
 },
 {
   id: 6,
@@ -107,8 +82,6 @@ const users = [{
   phone: '86-(939)186-9659',
   followingCount: 444,
   followersCount: 8432,
-  images: images,
-  photo: require('../img/avatars/Image 6.png'),
 },
 {
   id: 7,
@@ -123,8 +96,6 @@ const users = [{
   phone: '62-(373)613-7229',
   followingCount: 731,
   followersCount: 18230,
-  images: images,
-  photo: require('../img/avatars/Image 7.png'),
 },
 {
   id: 8,
@@ -139,8 +110,6 @@ const users = [{
   phone: '234-(135)610-8989',
   followingCount: 667,
   followersCount: 4234,
-  images: images,
-  photo: require('../img/avatars/Image 8.png'),
 },
 {
   id: 9,
@@ -155,8 +124,6 @@ const users = [{
   phone: '1-(913)904-8423',
   followingCount: 750,
   followersCount: 1032,
-  images: images,
-  photo: require('../img/avatars/Image 10.png'),
 },
 {
   id: 10,
@@ -171,8 +138,6 @@ const users = [{
   phone: '62-(688)911-5487',
   followingCount: 343,
   followersCount: 3721,
-  images: images,
-  photo: require('../img/avatars/Image 11.png'),
 },
 {
   id: 11,
@@ -187,8 +152,6 @@ const users = [{
   phone: '7-(121)282-0448',
   followingCount: 165,
   followersCount: 5433,
-  images: images,
-  photo: require('../img/avatars/Image 12.png'),
 }];
 
 export default users
