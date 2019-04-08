@@ -4,9 +4,10 @@ import {
   Image,
   Text,
   View,
-  TouchableOpacity,
+  ScrollView,
   Platform,
-  StatusBar
+  StatusBar,
+  StyleSheet
 } from 'react-native';
 import {
   RkText,
@@ -43,11 +44,13 @@ class Menu_Screen extends Component {
   render() {
 
     return (
-      <View>
-        <Text>
-          Welcome to Fitness Planner
-        </Text>
-      </View>
+      <ScrollView style={styles.root}>
+        <View style={styles.section}>
+          <View style={[styles.row, styles.heading]}>
+            <RkText rkType='h6'>Welcome to Fitness Planner</RkText>
+          </View>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -58,6 +61,25 @@ let styles = RkStyleSheet.create(theme => ({
     backgroundColor: theme.colors.screen.scroll,
     paddingVertical: 8,
     paddingHorizontal: 14
+  },
+  root: {
+    backgroundColor: theme.colors.screen.base
+  },
+  header: {
+    backgroundColor: theme.colors.screen.neutral,
+    paddingTop: 25
+  },
+  section: {
+    marginVertical: 25
+  },
+  heading: {
+    paddingBottom: 12.5
+  },
+  row: {
+    flexDirection: 'row',
+    paddingHorizontal: 17.5,
+    borderColor: theme.colors.border.base,
+    alignItems: 'center'
   },
   card: {
     marginVertical: 8,
