@@ -1,4 +1,23 @@
 {
-  "name": "loginTesting",
-  "displayName": "loginTesting"
+  "expo": {
+    "name": "fitness-planner",
+    "description": "A workout app.",
+    "slug": "fitness-planner",
+    "privacy": "public",
+    "sdkVersion": "28.0.0",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app-icon.png",
+    "loading": {
+      "icon": "./assets/icons/loading-icon.png",
+      "hideExponentText": false
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf", "mp4"]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
 }

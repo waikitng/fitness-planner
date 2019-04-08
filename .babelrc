@@ -1,12 +1,8 @@
 {
-  "presets": ["module:metro-react-native-babel-preset"],
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["./app", "./assets"],
-        "extensions": [".js", ".ios.js", ".android.js"]
-      }
-    ]
-  ]
+  "presets": ["babel-preset-expo"],
+  "env": {
+    "development": {
+      "plugins": ["transform-react-jsx-source"]
+    }
+  }
 }
