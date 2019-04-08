@@ -27,6 +27,7 @@ import Menu_Screen from './screens/Menu_Screen';
 import Profile_Screen from './screens/Profile_Screen';
 import Reset_Screen from './screens/Reset_Screen';
 import Settings_Screen from './screens/Settings_Screen';
+import MapComponent from './components/MapComponent'
 
 
 export default class App extends React.Component {
@@ -81,6 +82,7 @@ settings_screen: { screen: Settings_Screen },
     const MainNavigator = createBottomTabNavigator({
       menu_scr: { screen: Menu_Screen },
       settings_screen: { screen: Settings_Screen },
+      gyms_screen: {screen: MapComponent}
     },
     {
       navigationOptions: {
