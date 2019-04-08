@@ -18,7 +18,6 @@ import {
 import { Header } from 'react-navigation';
 
 import {SocialBar} from './../components/';
-import articles from './../data/raw/articles';
 import { Button } from 'react-native-elements';
 import {FontAwesome} from './../assets/icons';
 
