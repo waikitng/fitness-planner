@@ -81,8 +81,8 @@ settings_screen: { screen: Settings_Screen },
     // const MainNavigator = TabNavigator({
     const MainNavigator = createBottomTabNavigator({
       menu_scr: { screen: Menu_Screen },
-      settings_screen: { screen: Settings_Screen },
-      gyms_screen: {screen: MapComponent}
+      gyms_screen: {screen: MapComponent},
+      settings_screen: { screen: Settings_Screen }
     },
     {
       navigationOptions: {
