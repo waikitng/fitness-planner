@@ -45,6 +45,18 @@ class Menu_Screen extends Component {
     return (
       <ScrollView style={styles.root}>
         <View style={styles.section}>
+          <Button
+                title="Add Log"
+                onPress={() => this.props.navigation.navigate("add_log_screen", {
+              })
+              }
+          />
+          <Button 
+                title="View Log"
+                onPress={() => this.props.navigation.navigate("view_log_screen", {
+              })
+              }
+          />
           <View style={[styles.row, styles.heading]}>
             <RkText rkType='h6'>Welcome to Fitness Planner</RkText>
           </View>
