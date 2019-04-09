@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, StyleSheet } from 'react-native';
-import Permissions from 'react-native-permissions';
+import Permissions from 'expo';
 
 export default class GPSComponent extends Component {
 
@@ -17,19 +17,20 @@ export default class GPSComponent extends Component {
         }
     }
 
-    _requestPermissions() {
-        Permissions.request('location')
-            .then(response => {
-                this.setState({
-                    locationPermission: response
-                })
-                console.log("Response: " + response);
-            });
+    async getLocationAsync() {
+        const { Location, Permissions } = Expo;
+        // permissions returns only for location permissions on iOS and under certain conditions, see Permissions.LOCATION
+        const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status === 'granted') {
+            return Location.getCurrentPositionAsync({enableHighAccuracy: true});
+        } else {
+            throw new Error('Location permission not granted');
+        }
     }
 
     componentDidMount() {
         console.log('Start');
-        this._requestPermissions();
+        this.getLocationAsync();
         console.log('Check position');
         navigator.geolocation.getCurrentPosition((position) => {
             console.log(position.coords);
