@@ -16,6 +16,7 @@ export default class MapComponent extends Component {
 
     static navigationOptions = {
         headerTitle: 'Location',
+        tabBarLabel: 'Tracker',
         tabBarIcon: ({ tintColor }) => (
           <RkText
             rkType='awesome'
