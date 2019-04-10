@@ -104,7 +104,7 @@ settings_screen: { screen: Settings_Screen },
          }
       },
       tabBarOptions: {
-        showLabel: false,
+        showLabel: true,
         showIcon: true,
         indicatorStyle: { backgroundColor: '#ffffff' },
         activeTintColor: RkTheme.current.colors.accent,
