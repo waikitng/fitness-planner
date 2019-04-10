@@ -141,6 +141,7 @@ export default class MapComponent extends Component {
             <View style={styles.container}>
                 <MapView 
                 region={this.state.region}
+                showsUserLocation={true}
                 style={styles.map}>
                 
                 <Marker coordinate={this.state.gym_region_1}> 

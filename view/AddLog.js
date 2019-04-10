@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput, TouchableHighlight, Alert, TouchableOpacity, Picker, Button, StyleSheet } from 'react-native';
 import { addLog } from '../actions/ItemsAction';
-import ReactNativePickerModule from 'react-native-picker-module'
+import ReactNativePickerModule from 'react-native-picker-module';
+import { RkStyleSheet, RkTheme, RkCard, RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
+import { Icon } from 'react-native-elements';
 
 export default class AddLog extends Component {
 
     static navigationOptions={
-        title:'Log',
+        title:'Add Workout',
         headerStyle:{
             backgroundColor: '#f4511e',
         },
@@ -49,7 +51,7 @@ export default class AddLog extends Component {
   }
   handleSubmit(){
       addLog(this.state.date, this.state.name, this.state.muscle, this.state.reps1, this.state.reps2, this.state.reps3, this.state.lbs1,this.state.lbs2,this.state.lbs3);
-      Alert.alert('Log saved successfully');
+      Alert.alert('Log Saved Successfully');
   }
 
   componentDidMount() {
@@ -68,8 +70,9 @@ export default class AddLog extends Component {
     render() {
         return (
             <View style={styles.mainContainer}>
+            
             <View style={styles.header}>
-            <Text>Today: {this.state.date}</Text>
+            <RkText>Today: {this.state.date}</RkText>
               <TextInput
                 style={styles.headerText}
                 returnKeyType="done"
@@ -79,8 +82,17 @@ export default class AddLog extends Component {
 
             <View>
               <TouchableOpacity onPress={() => {this.pickerRef.show()}}>
-                <Text>Select Muscle</Text>
+                <RkText>Select Muscle 
+                  <RkText> </RkText>
+                  <Icon
+                    name='sort-down'
+                    type='font-awesome'
+                  />
+                  <RkText>        {this.state.muscle}</RkText>
+              </RkText>
+                
               </TouchableOpacity>
+              
               <ReactNativePickerModule
                 pickerRef={e => this.pickerRef = e}
                 value={this.state.selectedValue}
@@ -91,32 +103,19 @@ export default class AddLog extends Component {
                     muscle: this.state.data[index]
                   })
               }}/>
-              <Text>{this.state.muscle}</Text>
+              
+              
             </View>
 
-            {/* <View>
-              <Text>Muscle</Text>
-              <Text>{this.state.muscle}</Text>
-              <Picker
-                selectedValue={this.state.muscle}
-                onValueChange={(itemValue, itemIndex) => this.setState({muscle: itemValue})}  
-                >
-                <Picker.Item label="Legs" value="legs" />
-                <Picker.Item label="Abs" value="abs" />
-                <Picker.Item label="Back" value="back" />
-                <Picker.Item label="Shoulders" value="shoulders" />
-                <Picker.Item label="Arms" value="arms" />
-              </Picker>
-            </View> */}
-
+            <View style={styles.mainSet}>
             <View style={styles.setHeader}>
-              <Text>Sets</Text>
-              <Text>Reps</Text>
-              <Text>lbs</Text>
+              <RkText>Sets</RkText>
+              <RkText>Reps</RkText>
+              <RkText>lbs</RkText>
             </View>
 
             <View style={styles.set}>
-              <Text>1</Text>
+              <RkText> 1</RkText>
               <TextInput
                 style={styles.text_input}
                 returnKeyType="done"
@@ -134,7 +133,7 @@ export default class AddLog extends Component {
             </View>
 
             <View style={styles.set}>
-              <Text>2</Text>
+              <RkText> 2</RkText>
               <TextInput
                 style={styles.text_input}
                 returnKeyType="done"
@@ -152,7 +151,7 @@ export default class AddLog extends Component {
             </View>
 
             <View style={styles.set}>
-              <Text>3</Text>
+              <RkText> 3</RkText>
               <TextInput
                 style={styles.text_input}
                 returnKeyType="done"
@@ -168,26 +167,57 @@ export default class AddLog extends Component {
                 onChangeText={(text) => this.setState({lbs3: text})}
               />
             </View>
-
+            </View>
 
             <View style={styles.button_container}>
-            <Button
+            <RkButton rkType='add'
               onPress={this.handleSubmit}
-              title="Save log"
-              accessibilityLabel="Learn more about this purple button"
-            />
+            ><RkText rkType='save'>Save Workout</RkText>
+            </RkButton>
               
             </View>
           </View>
         )
     }
 }
+
+RkTheme.setType('RkTypeInput', 'name', {
+  container: {
+    backgroundColor: 'white',
+    borderWidth:3,
+    borderRadius: 10,
+    borderColor: "#ed1c4d",
+    alignSelf: 'center',
+    height:100,
+    width:"80%",
+    padding:20,
+    paddingVertical: 8,
+ }
+})
+
+RkTheme.setType('RkButton', 'add', {
+    backgroundColor: '#ffffff',
+    alignSelf: 'center',
+    alignItems:'center',
+    borderRadius: 20,
+    borderWidth:3,
+    width:'70%',
+    height:'25%'
+  
+})
+
+RkTheme.setType('RkText', 'save', {
+  fontSize:20,
+  alignSelf: 'center',
+})
+
 const styles = StyleSheet.create({
     mainContainer: {
       flex:1,
       backgroundColor: '#fff',
       alignItems: "stretch",
-      padding:'7%'
+      padding:'7%',
+      
     },
     header:{
       borderBottomColor:'#fff',
@@ -198,6 +228,8 @@ const styles = StyleSheet.create({
       fontSize:30,
       borderBottomColor:'rgba(68,68,68,0.4)',
       borderBottomWidth:2,
+      marginTop:'5%',
+      marginBottom:'5%',
     },
     setHeader:{
       flexDirection: 'row',
@@ -206,5 +238,22 @@ const styles = StyleSheet.create({
     set:{
       flexDirection: 'row',
       justifyContent:'space-between'
+    },
+    mainSet:{
+      backgroundColor:'rgba(68,68,68,0.2)',
+      padding:'4%',
+      borderRadius:10,
+      marginTop:'5%',
+      // marginBottom:'40%'
+    },
+    text_input:{
+      width:'10%',
+      textAlign: 'center',
+    },
+    button_container:{
+      marginTop:'40%',
+      width:"100%",
+      height:"60%"
     }
+
   });

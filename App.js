@@ -90,6 +90,7 @@ settings_screen: { screen: Settings_Screen },
     },
     {
       navigationOptions: {
+        title: 'Welcome to Fitness Planner',
         headerLeft: null,
         headerStyle: {
            backgroundColor: 'white',
