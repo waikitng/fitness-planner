@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet,Alert, Button} from 'react-native';
+import {View, Text, StyleSheet,Alert} from 'react-native';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native-gesture-handler';
 import {db} from '../config/auth';
 import firebase from 'firebase';
+import { RkStyleSheet, RkTheme, RkCard, RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
+import { Button, Icon } from 'react-native-elements';
 
 export default class ItemComponent extends Component {
 
@@ -23,20 +25,39 @@ export default class ItemComponent extends Component {
   }
     render() {
       return (
-        <ScrollView>
+        <ScrollView style={styles.main}>
           {this.props.items.map((item, index) => {
             console.log(item);
             let name = item.name;
               return (
+                <RkCard style={styles.card}>
                   <View style={styles.item} key={index}>
-                      <Text style={styles.itemheader}> {item.name} {item.date}</Text>
-                      <Text>{item.muscle}</Text>
-                      <Text style={styles.itemtext}>Set 1 Reps {item.reps1} {item.lbs1}lbs</Text>
-                      <Text style={styles.itemtext}>Set 2 Reps {item.reps2} {item.lbs2}lbs</Text>
-                      <Text style={styles.itemtext}>Set 3 Reps {item.reps3} {item.lbs3}lbs</Text>
+                    <View style={styles.header}>
+                      <Text style={styles.itemheader}> {item.name}</Text>
+                      <Text style={styles.itemDate}> {item.date}</Text>
+                    </View>
                       
-                      <Button
-                        onPress={() => Alert.alert(
+                      <View style={styles.set}>
+                        <Text style={styles.itemtext}>Set 1</Text>
+                        <Text style={styles.itemtext}>Reps {item.reps1}</Text>
+                        <Text style={styles.itemtext}>{item.lbs1}lbs</Text>
+                      </View>
+                      
+                      <View style={styles.set}>
+                      <Text style={styles.itemtext}>Set 2</Text>
+                        <Text style={styles.itemtext}>Reps {item.reps2}</Text>
+                        <Text style={styles.itemtext}>{item.lbs2}lbs</Text>
+                      </View>
+
+                      <View style={styles.set}>
+                      <Text style={styles.itemtext}>Set 3</Text>
+                        <Text style={styles.itemtext}>Reps {item.reps3}</Text>
+                        <Text style={styles.itemtext}>{item.lbs3}lbs</Text>
+                      </View>
+
+                      <View style={styles.bottom}>
+                      <Text style={styles.bottomText}>{item.muscle}</Text>
+                      <RkButton rkType='delete' onPress={() => Alert.alert(
                           'Delete ' + name,
                           //waikits work//
                           "Are you sure?",
@@ -49,10 +70,16 @@ export default class ItemComponent extends Component {
                             {text: 'OK', onPress: () => this._deleteLog(index)},
                           ],
                           {cancelable: false},
-                        )}
-                        title="Delete"
-                      />
+                        )}>
+                          <Icon
+                            name='trash'
+                            type='font-awesome'
+                            color='red'
+                          />
+                      </RkButton>
+                      </View>
                   </View>
+                  </RkCard>
               )
           })}
           
@@ -61,15 +88,38 @@ export default class ItemComponent extends Component {
     }
   }
 
+  RkTheme.setType('RkButton', 'delete', {
+    marginLeft: 'auto',
+    backgroundColor: '#ffffff',
+    width: 50,
+  })
 const styles = StyleSheet.create({  
+  main:{
+    backgroundColor: 'rgb(244, 244, 244)',
+  },
+  card:{
+    margin:'2%',
+    marginBottom: '1%',
+    padding: "2%",
+    paddingBottom: "4%",
+    
+  },
+  bottom:{
+    flexDirection: 'row',
+    justifyContent:'space-between'
+  },
+  bottomText:{
+    position:'absolute',
+    bottom:10,
+  },
   item: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'rgba(68,68,68,0.2)',
-    borderRadius: 4,
-    borderWidth: 10,
+    // borderRadius: 4,
+    // borderWidth: 10,
     borderColor: '#ffffff',
-    justifyContent: 'space-evenly',
+    justifyContent: "space-around",
+    
   },
   itemheader: {
     flex:2,
@@ -77,10 +127,20 @@ const styles = StyleSheet.create({
     justifyContent:"space-between",
     fontSize: 24,
     fontWeight: '400',
-    
+    paddingBottom: '3%',
+    fontWeight: "bold"
+  },
+  header:{
+    flexDirection: 'row',
+    justifyContent:'space-between'
+  },
+  set:{
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    width:"70%"
   },
   itemtext: {
     fontSize: 16,
-    justifyContent:"space-evenly"
+    alignContent: "stretch",
   }
 });
