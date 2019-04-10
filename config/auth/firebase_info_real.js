@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyAhmSuCV7zn69EaAJKMMRgkFlern_McwK8",
   authDomain: "mobile-fitness-planner.firebaseapp.com",
@@ -6,3 +8,6 @@ export const firebaseConfig = {
   storageBucket: "mobile-fitness-planner.appspot.com",
   messagingSenderId: "928462755945"
 };
+
+let app = firebase.initializeApp(firebaseConfig);
+export const db = app.database();

@@ -25,7 +25,7 @@ import {FontAwesome} from './../assets/icons';
 class Menu_Screen extends Component {
 
   static navigationOptions = {
-    headerTitle: 'Items',
+    headerTitle: 'Home',
     tabBarLabel: 'Home',
     tabBarIcon: ({ tintColor }) => (
       <RkText
@@ -48,6 +48,18 @@ class Menu_Screen extends Component {
           <View style={[styles.row, styles.heading]}>
             <RkText rkType='h6'>Welcome to Fitness Planner</RkText>
           </View>
+          <Button
+                title="Add Log"
+                onPress={() => this.props.navigation.navigate("add_log_screen", {
+              })
+              }
+          />
+          <Button 
+                title="View Log"
+                onPress={() => this.props.navigation.navigate("view_log_screen", {
+              })
+              }
+          />
         </View>
       </ScrollView>
     )

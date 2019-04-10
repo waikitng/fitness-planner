@@ -30,5 +30,6 @@ export const FontAwesome = {
   calendar: String.fromCharCode(61555),
   home: String.fromCharCode(61461),
   list: String.fromCharCode(61498),
-  cog: String.fromCharCode(61459)
+  cog: String.fromCharCode(61459),
+  map: String.fromCharCode(61732)
 };

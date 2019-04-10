@@ -2,9 +2,33 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import MapView, { Marker, Circle, Callout } from 'react-native-maps';
-import Permissions from "react-native-permissions";
+import Permissions from 'expo';
+import {FontAwesome} from './../assets/icons';
+import {
+  RkText,
+  RkTextInput,
+  RkAvoidKeyboard,
+  RkTheme,
+  RkStyleSheet
+} from 'react-native-ui-kitten';
 
 export default class MapComponent extends Component {
+
+    static navigationOptions = {
+        headerTitle: 'Location',
+        tabBarLabel: 'Tracker',
+        tabBarIcon: ({ tintColor }) => (
+          <RkText
+            rkType='awesome'
+            style={{
+              color: tintColor,
+              fontSize: 24,
+              marginBottom: 0,
+            }}>
+              {FontAwesome.map}
+          </RkText>
+        ),
+    };
 
     constructor() {
         super();
@@ -43,14 +67,15 @@ export default class MapComponent extends Component {
         };
     }
 
-    _requestPermissions() {
-        Permissions.request('location')
-            .then(response => {
-                this.setState({
-                    locationPermission: response
-                })
-                console.log("Response: " + response);
-            });
+    async getLocationAsync() {
+        const { Location, Permissions } = Expo;
+        // permissions returns only for location permissions on iOS and under certain conditions, see Permissions.LOCATION
+        const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status === 'granted') {
+            return Location.getCurrentPositionAsync({enableHighAccuracy: true});
+        } else {
+            throw new Error('Location permission not granted');
+        }
     }
  
     _getGyms() {
@@ -95,7 +120,7 @@ export default class MapComponent extends Component {
 
     componentDidMount() {
         console.log('Start');
-        this._requestPermissions();
+        this.getLocationAsync();
         console.log('Check position');
         navigator.geolocation.getCurrentPosition((position) => {
             this.setState({

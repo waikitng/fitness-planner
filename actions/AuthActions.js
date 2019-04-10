@@ -187,7 +187,7 @@ export const signupUser = ({ email, password, phone, firstname, lastname  }) => 
       loginUserSuccess(dispatch, user);
       dispatch({
         type: ERROR_SET,
-        payload: 'Welcome to our Online Shop'
+        payload: 'Welcome to our Fitness App'
       });
       })
     }

@@ -12,7 +12,8 @@ import reducers from './reducers';
 
 import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator, createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import { firebaseConfig } from './config/auth';
+import { db } from './config/auth/firebase_info_real';
+import {firebaseConfig} from './config/auth/firebase_info_real'
 import { bootstrap } from './config/bootstrap';
 import { RkStyleSheet, RkTheme } from 'react-native-ui-kitten';
 import NavigatorService from './utils/navigator';
@@ -29,6 +30,9 @@ import Reset_Screen from './screens/Reset_Screen';
 import Settings_Screen from './screens/Settings_Screen';
 import MapComponent from './components/MapComponent'
 
+//workout log
+import AddLog from './view/AddLog';
+import ViewLog from './view/ViewLog';
 
 export default class App extends React.Component {
 
@@ -43,7 +47,7 @@ export default class App extends React.Component {
   componentWillMount() {
 
     console.log(firebaseConfig);
-    firebase.initializeApp(firebaseConfig);
+    // db.initializeApp(firebaseConfig);
 
   }
 
@@ -81,8 +85,8 @@ settings_screen: { screen: Settings_Screen },
     // const MainNavigator = TabNavigator({
     const MainNavigator = createBottomTabNavigator({
       menu_scr: { screen: Menu_Screen },
-      settings_screen: { screen: Settings_Screen },
-      gyms_screen: {screen: MapComponent}
+      gyms_screen: {screen: MapComponent},
+      settings_screen: { screen: Settings_Screen }
     },
     {
       navigationOptions: {
@@ -100,7 +104,7 @@ settings_screen: { screen: Settings_Screen },
          }
       },
       tabBarOptions: {
-        showLabel: false,
+        showLabel: true,
         showIcon: true,
         indicatorStyle: { backgroundColor: '#ffffff' },
         activeTintColor: RkTheme.current.colors.accent,
@@ -122,7 +126,9 @@ settings_screen: { screen: Settings_Screen },
       reset_screen: { screen: Reset_Screen },
       profile_screen: { screen: Profile_Screen },
       login_screen: { screen: Login_Screen},
-      main_screen: { screen: MainNavigator}
+      main_screen: { screen: MainNavigator},
+      add_log_screen: {screen: AddLog },
+      view_log_screen: {screen: ViewLog}
       },
       {
         navigationOptions: {
